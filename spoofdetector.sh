@@ -6,7 +6,9 @@
 #11/04/2024
 
 # Define the interface and the FLAG to search for
-INTERFACE="wlp4s0"
+INTERFACE=$(ip -o -4 route show to default | awk '{print $5}')
+#depreciated
+#INTERFACE="wlp4s0"
 TARGET_IP="192.168.1.3"
 FLAG=""
 
