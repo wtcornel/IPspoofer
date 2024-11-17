@@ -12,11 +12,8 @@ INTERFACE=$(ip -o -4 route show to default | awk '{print $5}')
 TARGET_IP="192.168.1.3"
 FLAG=""
 
+#for testing
 echo "Beep Boop Beep Boop Im working"
 
-# Use tcpdump to listen for packets from the target IP that contain the FLAG
-#sudo tcpdump -i "$INTERFACE" -A src "$TARGET_IP" and 'tcp' | grep 123
-#v2?
-sudo tcpdump -i any 'src host 192.168.1.3 and dst host 192.168.1.2 and tcp dst port 333 and tcp[tcpflags] & tcp-syn != 0'
-
-
+#look for rhe packet
+sudo tcpdump -i any 'dst port 333 and tcp[tcpflags] & tcp-syn != 0'
